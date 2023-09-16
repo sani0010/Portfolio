@@ -25,11 +25,11 @@
     justify-content: center;
     flex-wrap: wrap;
     width: 100vw;
-    max-width: 65rem;
+    max-width: 53rem;
 }
 .worksImg{
     object-fit: cover;
-    height: 20rem;
+    height: 25rem;
     margin: 0.5rem;
 }
 .workBtn{

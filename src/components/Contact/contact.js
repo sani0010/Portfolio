@@ -33,10 +33,10 @@ const Contact = () => {
                 <textarea className='msg' name='message' rows={5} placeholder='Your Message'></textarea>
                 <button type='submit' value='Send' className='submitBtn'>Submit</button>
                 <div className='links'>
-                    <img src={FacebookIcon} alt='FacebookIcon' className='link' />
-                    <img src={TwitterIcon} alt='TwitterIcon' className='link' />
-                    <img src={YoutubeIcon} alt='YoutubeIcon' className='link' />
-                    <img src={InstagramIcon} alt='InstagramIcon' className='link' />
+                    <a href='https://www.facebook.com/profile.php?id=100010505529239'><img src={FacebookIcon} alt='FacebookIcon' className='link' /></a>
+                    <a href='https://twitter.com/tamrakar_sani'><img src={TwitterIcon} alt='TwitterIcon' className='link' /></a>
+                    <a href='https://www.youtube.com/channel/UC8t-7m9QcenxoQJ45W0_pPA'><img src={YoutubeIcon} alt='YoutubeIcon' className='link' /></a>
+                    <a href='https://www.instagram.com/sanitmrkr/'><img src={InstagramIcon} alt='InstagramIcon' className='link' /></a>
                 </div>
             </form>
         </div>
