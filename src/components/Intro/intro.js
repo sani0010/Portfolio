@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useMemo, useCallback } from 'react';
 import './intro.css';
 import bg from '../../assets/image.jpg';
 import { Link } from 'react-scroll';
@@ -7,13 +7,13 @@ import btnImg from '../../assets/hireme.png';
 const Intro = () => {
   const [loopNum, setLoopNum] = useState(0);
   const [isDeleting, setIsDeleting] = useState(false);
-  const toRotate = ["Web Developer", "Web Designer", "UI/UX Designer"];
   const [text, setText] = useState('');
   const [delta, setDelta] = useState(300 - Math.random() * 100);
   const period = 1000;
 
-  // Define the tick function
-  const tick = () => {
+  const toRotate = useMemo(() => ["Web Developer", "Web Designer", "UI/UX Designer"], []);
+
+  const tick = useCallback(() => {
     let i = loopNum % toRotate.length;
     let fullText = toRotate[i];
     let updatedText = isDeleting ? fullText.substring(0, text.length - 1) : fullText.substring(0, text.length + 1);
@@ -32,9 +32,8 @@ const Intro = () => {
       setLoopNum(loopNum + 1);
       setDelta(500);
     }
-  };
+  }, [loopNum, toRotate, text, isDeleting, period]);
 
-  // useEffect with correct dependency array
   useEffect(() => {
     const ticker = setInterval(() => {
       tick();
@@ -43,7 +42,7 @@ const Intro = () => {
     return () => {
       clearInterval(ticker);
     };
-  }, [loopNum, toRotate, text, isDeleting, delta]); // Include all dependencies used inside tick and useEffect
+  }, [tick, delta]);
 
   return (
     <section id="intro">
