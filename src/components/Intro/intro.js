@@ -12,6 +12,7 @@ const Intro = () => {
   const [delta, setDelta] = useState(300 - Math.random() * 100);
   const period = 1000;
 
+  // Define the tick function
   const tick = () => {
     let i = loopNum % toRotate.length;
     let fullText = toRotate[i];
@@ -33,15 +34,16 @@ const Intro = () => {
     }
   };
 
+  // useEffect with correct dependency array
   useEffect(() => {
-    let ticker = setInterval(() => {
+    const ticker = setInterval(() => {
       tick();
     }, delta);
 
     return () => {
       clearInterval(ticker);
     };
-  }, [delta, tick]); // Include tick in the dependency array
+  }, [loopNum, toRotate, text, isDeleting, delta]); // Include all dependencies used inside tick and useEffect
 
   return (
     <section id="intro">
